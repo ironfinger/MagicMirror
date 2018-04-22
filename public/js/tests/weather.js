@@ -1,6 +1,5 @@
 const request = require('request');
 const path = require('path');
-const $ = require('jquery');
 
 const darkSkyReq = (lat, lng) => {
     let key = '668bf60cf034c2c299111995b6d32d81';

@@ -13,14 +13,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
     <!-- Css -->
-    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/index.css">
 </head>
-<body>
-    <!-- Time -->
-    <div class="Weather">
-        <div class ="jumbotron">
-            <h1 id="location"></h1>
-            <h2 id="weather">{{temperature}}</h2>
-    </div> 
-</body>
+    <body>
+        <!-- Time -->
+        <div class="Weather">
+            <div class ="jumbotron">
+                <h1 id="location"></h1>
+                <h2 id="weather">{{temperature}}</h2>
+            </div>
+        </div> 
+        <div class="crypto">
+            <div class="jumbotron">
+                <h2 class="crypto-data">BTC: {{btc}}</h2>
+                <h2 class="crypto-data">ETH: {{eth}}</h2>
+                <h2 class="crypto-data">LTC: {{ltc}}</h2>
+                <h2 class="crypto-data">DASH: {{dash}}</h2>
+        </div>
+    </body>
 </html>
