@@ -10,3 +10,7 @@ body {
     background-color: #000;
     border: #fff 2px solid;
 }
+
+.jumbotron {
+    background-color: #000;
+}

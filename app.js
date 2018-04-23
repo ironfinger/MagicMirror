@@ -7,10 +7,13 @@ const app = express();
 
 // Server setup:
 var data = {
+    // Weather, time and location:
     temp: null,
     lat: null,
     lng: null,
     place: encodeURIComponent('London'),
+    time: [],
+    // Crypto:
     BTC: null,
     ETH: null,
     DASH: null,
@@ -21,7 +24,19 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
-app.use((req, res, next) => {
+// Middleware:
+app.use((req, res, next) => { // Loading Screen.
+    // Send loading template:
+    
+    next();
+})
+
+app.use((req, res, next) => { // Time.
+    // Time
+    next();
+});
+
+app.use((req, res, next) => { // Google maps location.
     let key = 'AIzaSyB2g-IAb-RKCIO5vsMK5AQMzU7xnvPMHkA';
 
     request({
@@ -34,7 +49,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
+app.use((req, res, next) => { // Dark Sky Weather API.
     let key = '668bf60cf034c2c299111995b6d32d81';
     let lat = '51';
     let lng = '0';
@@ -55,7 +70,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
+app.use((req, res, next) => { // Crypto Information.
     let url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC,DASH&tsyms=GBP';
     request({
         url: url,
@@ -69,8 +84,15 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => { // News.
+ 
+});
+
+// Routes:
 app.get('/', (req, res) => {
     res.render('main.hbs', {
+        hours: data.time[0],
+        minutes: data.time[1],
         temperature: data.temp,
         btc: data.BTC,
         eth: data.ETH,
