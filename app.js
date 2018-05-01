@@ -127,4 +127,9 @@ app.get('/', (req, res) => {
     });
 });
 
+// Socket
+io.on('connection', (socket) => {
+    console.log('a user connected');
+});
+
 app.listen(3000, () => console.log("App running on port 3000"));
