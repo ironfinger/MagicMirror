@@ -108,7 +108,7 @@ const time = () => {
     }
 
     if (min.length < 2) {
-        min = `0${d.getMinutes}`;
+        min = `0${min}`;
     }
 
     return `${hours}:${min}`;

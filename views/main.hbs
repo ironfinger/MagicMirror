@@ -17,6 +17,7 @@
 
     <!-- Css -->
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/loadingBalls.css">
 
     <!-- Js -->
     <script src="/js/index.js"></script>
@@ -32,18 +33,37 @@
             <h2 id="weather">{{temperature}}</h2>
         </div> 
         <div class="crypto">
-                <h1>Cryptocurrency prices</h1>
                 <div id="currencies">
-                    <h2 class="crypto-data">BTC: £{{btc}}</h2>
-                    <h2
-                     class="crypto-data">ETH: £{{eth}}</h2>
-                    <h2 class="crypto-data">LTC: £{{ltc}}</h2>
-                    <h2 class="crypto-data">DASH: £{{dash}}</h2>
+                    <h2 class="crypto-data" id="BTC">
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div> 
+                    </h2>
+                    <h2 class="crypto-data" id="BCH">
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div> 
+                    </h2>
+                    <h2 class="crypto-data" id="ETH">
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div> 
+                    </h2>
+                    <h2 class="crypto-data" id="LTC">
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div> 
+                    </h2>
                 </div>
         </div>
         <div class="news">
             <h1>{{source}}</h1>
         </div>
+        <p>Hello</p>
         <!-- Socket -->
 
     </body>
