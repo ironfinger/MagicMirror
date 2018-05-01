@@ -28,43 +28,53 @@
             <!--&vBar;-->
             {{time}}
         </div> 
-        <div class="Weather">
+        <div class="weather">
             <h1 id="location"></h1>
             <h2 id="weather">{{temperature}}</h2>
         </div> 
         <div class="crypto">
                 <div id="currencies">
-                    <h2 class="crypto-data" id="BTC">
-                        <div class="ball"></div>
-                        <div class="ball"></div>
-                        <div class="ball"></div>
-                        <div class="ball"></div> 
+                    <h2 class="token">
+                        <img class="crypto-logo" src="images/BTC.png">
+                        <div class="crypto-data" id="BTC">
+                            <div class="ball"></div>
+                            <div class="ball"></div> 
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
                     </h2>
-                    <h2 class="crypto-data" id="BCH">
-                        <div class="ball"></div>
-                        <div class="ball"></div>
-                        <div class="ball"></div>
-                        <div class="ball"></div> 
+                    <h2 class="crypto-data">
+                        <img class="crypto-logo" src="images/BCH.png">
+                        <div class="crypto-data" id="BCH">
+                            <div class="ball"></div>
+                            <div class="ball"></div> 
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
                     </h2>
-                    <h2 class="crypto-data" id="ETH">
-                        <div class="ball"></div>
-                        <div class="ball"></div>
-                        <div class="ball"></div>
-                        <div class="ball"></div> 
+                    <h2 class="crypto-data">
+                        <img class="crypto-logo" src="images/ETH.png">
+                        <div class="crypto-data" id="ETH">
+                            <div class="ball"></div>
+                            <div class="ball"></div> 
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
                     </h2>
-                    <h2 class="crypto-data" id="LTC">
-                        <div class="ball"></div>
-                        <div class="ball"></div>
-                        <div class="ball"></div>
-                        <div class="ball"></div> 
+                    <h2 class="crypto-data">
+                        <img class="crypto-logo" src="images/LTC.png">
+                        <div class="crypto-data" id="LTC">
+                            <div class="ball"></div>
+                            <div class="ball"></div> 
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
                     </h2>
                 </div>
         </div>
         <div class="news">
             <h1>{{source}}</h1>
         </div>
-        <p>Hello</p>
-        <!-- Socket -->
-
+        <button type="button" class="btn btn-light" id="alert-button">Alert: ON</button>
     </body>
 </html>

@@ -4,23 +4,31 @@ body {
 }
 
 .Time {
-    width: 50vw;
-    height: 25vw;
+    width: 5em;
+    height: 2em;
     background-color: #000;
-    margin: 5rem auto;
-    box-shadow: 15px 15px 0px -10px gold, -15px -15px 0px -10px gold, 5px -5px orangered, -5px 5px orangered;
+    /*margin: 5rem auto;*/
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 1em;
+    box-shadow: 15px 15px 0px -10px black, -15px -15px 0px -10px black, 5px -5px white, -5px 5px white;
     color: snow;
     text-align: center;
-    line-height: 25vw;
-    font-size: 17vw;
+    line-height: 2em;
+    font-size: 80px;
 }
 
-#weather-widget {
-    width: 300px;
-    height: 300px;
+.weather {
+    position: absolute;
+    width: 7em;
+    height: 3.5em;
+    top: 30px;
+    right: 30px;
 
-    background-color: #000;
-    border: #fff 2px solid;
+    box-shadow: 15px 15px 0px -10px black, -15px -15px 0px -10px black, 5px -5px white, -5px 5px white;
+    color: snow;
+    text-align: center;
+    
 }
 
 .jumbotron {
@@ -30,6 +38,19 @@ body {
 .crypto {
     margin-top: 20px;
     margin-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 25em;
+    box-shadow: 15px 15px 0px -10px black, -15px -15px 0px -10px black, 5px -5px white, -5px 5px white;
+    color: snow;
+}
+
+.crypto-logo {
+    width: 1em;
+    height: 1em;
+
+    float: left;
+    margin-top: 5px;
 }
 
 .crypto-data {
@@ -42,4 +63,8 @@ body {
 
 .news {
 
+}
+
+#alert-button {
+    margin-top: 50px;
 }

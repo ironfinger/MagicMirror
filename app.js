@@ -68,21 +68,6 @@ app.use((req, res, next) => { // Dark Sky Weather API.
     next();
 });
 
-
-app.use((req, res, next) => { // Crypto Information.
-    let url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC,DASH&tsyms=GBP';
-    request({
-        url: url,
-        json: true
-    }, (error, res, body) => {
-        data.BTC = body.BTC.GBP;
-        data.ETH = body.ETH.GBP;
-        data.LTC = body.LTC.GBP;
-        data.DASH = body.LTC.GBP;
-    });
-    next();
-});
-
 app.use((req, res, next) => { // News.
     let url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=8d72934b72c44fd897d6e2d2c51862c5';
 
@@ -118,7 +103,7 @@ const time = () => {
 app.get('/', (req, res) => {
     res.render('main.hbs', {
         time: time,
-        temperature: data.temp,
+        temperature: `${data.temp} C`,
         btc: data.BTC,
         eth: data.ETH,
         ltc: data.LTC,
