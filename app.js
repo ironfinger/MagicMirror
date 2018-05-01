@@ -70,6 +70,7 @@ app.use((req, res, next) => { // Dark Sky Weather API.
     next();
 });
 
+
 app.use((req, res, next) => { // Crypto Information.
     let url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC,DASH&tsyms=GBP';
     request({
@@ -85,14 +86,35 @@ app.use((req, res, next) => { // Crypto Information.
 });
 
 app.use((req, res, next) => { // News.
- 
+    next();
 });
+
+// Functions: 
+const time = () => {
+    let date = new Date;
+    var hour = ``;
+    var min = ``;
+    
+    if (date.getHours < 10) {
+        hour = `0${date.getHours}`;
+    }else{
+        hour = date.getHours();
+    }
+
+    if (date.getMinutes < 10) {
+        min = `0${date.getMinutes}`;
+    }else {
+        min = date.getMinutes(); 
+    }
+
+    console.log(`${hour}:${min}`);
+    return `${hour}:${min}`;
+}
 
 // Routes:
 app.get('/', (req, res) => {
     res.render('main.hbs', {
-        hours: data.time[0],
-        minutes: data.time[1],
+        time: time(),
         temperature: data.temp,
         btc: data.BTC,
         eth: data.ETH,

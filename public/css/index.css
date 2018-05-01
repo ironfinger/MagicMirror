@@ -3,6 +3,18 @@ body {
     color: #fff;
 }
 
+.Time {
+    width: 50vw;
+    height: 25vw;
+    background-color: #000;
+    margin: 5rem auto;
+    box-shadow: 15px 15px 0px -10px gold, -15px -15px 0px -10px gold, 5px -5px orangered, -5px 5px orangered;
+    color: snow;
+    text-align: center;
+    line-height: 25vw;
+    font-size: 17vw;
+}
+
 #weather-widget {
     width: 300px;
     height: 300px;
