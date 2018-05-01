@@ -14,6 +14,9 @@
 
     <!-- Css -->
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+
+    <!-- Js -->
+    <script src="/js/index.js"></script>
 </head>
     <body>
         <!-- Time -->
@@ -22,17 +25,21 @@
             {{time}}
         </div> 
         <div class="Weather">
-            <div class ="jumbotron">
-                <h1 id="location"></h1>
-                <h2 id="weather">{{temperature}}</h2>
-            </div>
+            <h1 id="location"></h1>
+            <h2 id="weather">{{temperature}}</h2>
         </div> 
         <div class="crypto">
-            <div class="jumbotron">
-                <h2 class="crypto-data">BTC: {{btc}}</h2>
-                <h2 class="crypto-data">ETH: {{eth}}</h2>
-                <h2 class="crypto-data">LTC: {{ltc}}</h2>
-                <h2 class="crypto-data">DASH: {{dash}}</h2>
+                <h1>Cryptocurrency prices</h1>
+                <div id="currencies">
+                    <h2 class="crypto-data">BTC: £{{btc}}</h2>
+                    <h2
+                     class="crypto-data">ETH: £{{eth}}</h2>
+                    <h2 class="crypto-data">LTC: £{{ltc}}</h2>
+                    <h2 class="crypto-data">DASH: £{{dash}}</h2>
+                </div>
+        </div>
+        <div class="news">
+            <h1>{{source}}</h1>
         </div>
     </body>
 </html>

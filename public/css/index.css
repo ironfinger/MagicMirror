@@ -26,3 +26,16 @@ body {
 .jumbotron {
     background-color: #000;
 }
+
+.crypto {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#currencies {
+    margin-left: 20px;
+}
+
+.news {
+
+}

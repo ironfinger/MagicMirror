@@ -12,7 +12,6 @@ var data = {
     lat: null,
     lng: null,
     place: encodeURIComponent('London'),
-    time: [],
     // Crypto:
     BTC: null,
     ETH: null,
@@ -22,14 +21,11 @@ var data = {
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public'));
 
 // Middleware:
-app.use((req, res, next) => { // Loading Screen.
-    // Send loading template:
-    
-    next();
-})
+app.use(express.static(__dirname + '/public'));
+
+app.use(express.static(__dirname + '/node_modules'));
 
 app.use((req, res, next) => { // Time.
     // Time
@@ -86,35 +82,40 @@ app.use((req, res, next) => { // Crypto Information.
 });
 
 app.use((req, res, next) => { // News.
+    let url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=8d72934b72c44fd897d6e2d2c51862c5';
+
+    request({
+        url: url,
+        json: true
+    }, (error, res, body) => {
+        console.log(body.articles[0].title);
+    });
+
     next();
 });
 
-// Functions: 
+// Functions:
 const time = () => {
-    let date = new Date;
-    var hour = ``;
-    var min = ``;
+    var d = new Date();
     
-    if (date.getHours < 10) {
-        hour = `0${date.getHours}`;
-    }else{
-        hour = date.getHours();
+    var hours = `${d.getHours()}`;
+    var min = `${d.getMinutes()}`;
+
+    if (hours.length < 2) {
+        hours = `0${hours}`;
     }
 
-    if (date.getMinutes < 10) {
-        min = `0${date.getMinutes}`;
-    }else {
-        min = date.getMinutes(); 
+    if (min.length < 2) {
+        min = `0${d.getMinutes}`;
     }
 
-    console.log(`${hour}:${min}`);
-    return `${hour}:${min}`;
+    return `${hours}:${min}`;
 }
 
 // Routes:
 app.get('/', (req, res) => {
     res.render('main.hbs', {
-        time: time(),
+        time: time,
         temperature: data.temp,
         btc: data.BTC,
         eth: data.ETH,

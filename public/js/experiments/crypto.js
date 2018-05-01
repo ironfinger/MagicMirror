@@ -9,3 +9,4 @@ request({
 }, (error, res, body) => {
     console.log(body.BTC.GBP);
 });
+
