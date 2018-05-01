@@ -1,9 +1,11 @@
-const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 const request = require('request');
 
+const express = require('express');
 const app = express();
+const http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 // Server setup:
 var data = {
@@ -124,4 +126,11 @@ app.get('/', (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log("App running on port 3000"));
+// Sockets:
+io.on('connection', () => {
+    console.log('a user connected');
+});
+
+http.listen(3000, () => {
+    console.log('listening on *:3000');
+});
