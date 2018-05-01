@@ -2,10 +2,13 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 const request = require('request');
-
-const app = express();
+const http = require('http');
 
 // Server setup:
+const app = express();
+http.Server(app);
+const io = require('socket.io')(http);
+
 var data = {
     // Weather, time and location:
     temp: null,
