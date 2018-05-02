@@ -19,7 +19,7 @@ socket.on('trades', (body) => {
                 if (alertON == true) {
                     audio.play();
                 }
-                
+                audio.play();
             }else if (body.coin == 'BCH') {
                 
             }else if (body.coin == 'ETH') {
