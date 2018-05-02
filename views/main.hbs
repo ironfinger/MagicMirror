@@ -12,8 +12,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
+    <!-- Socket.IO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
     <!-- Css -->
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/loadingBalls.css">
 
     <!-- Js -->
     <script src="/js/index.js"></script>
@@ -24,22 +28,53 @@
             <!--&vBar;-->
             {{time}}
         </div> 
-        <div class="Weather">
+        <div class="weather">
             <h1 id="location"></h1>
             <h2 id="weather">{{temperature}}</h2>
         </div> 
         <div class="crypto">
-                <h1>Cryptocurrency prices</h1>
                 <div id="currencies">
-                    <h2 class="crypto-data">BTC: £{{btc}}</h2>
-                    <h2
-                     class="crypto-data">ETH: £{{eth}}</h2>
-                    <h2 class="crypto-data">LTC: £{{ltc}}</h2>
-                    <h2 class="crypto-data">DASH: £{{dash}}</h2>
+                    <h2 class="token">
+                        <img class="crypto-logo" src="images/BTC.png">
+                        <div class="crypto-data" id="BTC">
+                            <div class="ball"></div>
+                            <div class="ball"></div> 
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
+                    </h2>
+                    <h2 class="crypto-data">
+                        <img class="crypto-logo" src="images/BCH.png">
+                        <div class="crypto-data" id="BCH">
+                            <div class="ball"></div>
+                            <div class="ball"></div> 
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
+                    </h2>
+                    <h2 class="crypto-data">
+                        <img class="crypto-logo" src="images/ETH.png">
+                        <div class="crypto-data" id="ETH">
+                            <div class="ball"></div>
+                            <div class="ball"></div> 
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
+                    </h2>
+                    <h2 class="crypto-data">
+                        <img class="crypto-logo" src="images/LTC.png">
+                        <div class="crypto-data" id="LTC">
+                            <div class="ball"></div>
+                            <div class="ball"></div> 
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                        </div>
+                    </h2>
                 </div>
         </div>
         <div class="news">
             <h1>{{source}}</h1>
         </div>
+        <button type="button" class="btn btn-light" id="alert-button">Alert: ON</button>
     </body>
 </html>

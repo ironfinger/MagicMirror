@@ -1,13 +1,12 @@
-const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 const request = require('request');
 const http = require('http');
 
-// Server setup:
+const express = require('express');
 const app = express();
-http.Server(app);
-const io = require('socket.io')(http);
+const http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 var data = {
     // Weather, time and location:
@@ -69,21 +68,6 @@ app.use((req, res, next) => { // Dark Sky Weather API.
     next();
 });
 
-
-app.use((req, res, next) => { // Crypto Information.
-    let url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC,DASH&tsyms=GBP';
-    request({
-        url: url,
-        json: true
-    }, (error, res, body) => {
-        data.BTC = body.BTC.GBP;
-        data.ETH = body.ETH.GBP;
-        data.LTC = body.LTC.GBP;
-        data.DASH = body.LTC.GBP;
-    });
-    next();
-});
-
 app.use((req, res, next) => { // News.
     let url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=8d72934b72c44fd897d6e2d2c51862c5';
 
@@ -109,7 +93,7 @@ const time = () => {
     }
 
     if (min.length < 2) {
-        min = `0${d.getMinutes}`;
+        min = `0${min}`;
     }
 
     return `${hours}:${min}`;
@@ -119,7 +103,7 @@ const time = () => {
 app.get('/', (req, res) => {
     res.render('main.hbs', {
         time: time,
-        temperature: data.temp,
+        temperature: `${data.temp} C`,
         btc: data.BTC,
         eth: data.ETH,
         ltc: data.LTC,
@@ -127,9 +111,11 @@ app.get('/', (req, res) => {
     });
 });
 
-// Socket
-io.on('connection', (socket) => {
+// Sockets:
+io.on('connection', () => {
     console.log('a user connected');
 });
 
-app.listen(3000, () => console.log("App running on port 3000"));
+http.listen(3000, () => {
+    console.log('listening on *:3000');
+});
