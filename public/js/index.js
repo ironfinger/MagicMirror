@@ -17,9 +17,9 @@ socket.on('trades', (body) => {
             console.log(`${body.coin}: ${body.msg.price}`);
             if (body.coin == 'BTC') {
                 if (alertON == true) {
-                    audio.play();
+                   // audio.play();
                 }
-                audio.play();
+                //audio.play();
             }else if (body.coin == 'BCH') {
                 
             }else if (body.coin == 'ETH') {
