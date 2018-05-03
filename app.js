@@ -8,7 +8,6 @@ const app = express();
 const http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-// Server setup:
 var data = {
     // Weather, time and location:
     temp: null,
