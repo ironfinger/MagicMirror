@@ -1,6 +1,7 @@
 const path = require('path');
 const hbs = require('hbs');
 const request = require('request');
+const port = process.env.PORT || 3000; // Heroku port Environment OR port 3000
 
 const express = require('express');
 const app = express();
@@ -116,6 +117,6 @@ io.on('connection', () => {
     console.log('a user connected');
 });
 
-http.listen(3000, () => {
+http.listen(port, () => {
     console.log('listening on *:3000');
 });
