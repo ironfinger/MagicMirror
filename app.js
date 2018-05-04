@@ -47,26 +47,26 @@ app.use((req, res, next) => { // Google maps location.
     next();
 });
 
-app.use((req, res, next) => { // Dark Sky Weather API.
-    let key = '668bf60cf034c2c299111995b6d32d81';
-    let lat = '51';
-    let lng = '0';
+// app.use((req, res, next) => { // Dark Sky Weather API.
+//     let key = '668bf60cf034c2c299111995b6d32d81';
+//     let lat = '51';
+//     let lng = '0';
 
-    console.log(`Retrieved lat and lng = (${data.lat},${data.lng})`);
+//     console.log(`Retrieved lat and lng = (${data.lat},${data.lng})`);
 
-    request({
-        url: `https://api.darksky.net/forecast/${key}/${lat},${lng}?units=auto`,
-        json: true
-    }, (error, res, body) => {
-        console.log(`Body of req: ${body}`);
+//     request({
+//         url: `https://api.darksky.net/forecast/${key}/${lat},${lng}?units=auto`,
+//         json: true
+//     }, (error, res, body) => {
+//         console.log(`Body of req: ${body}`);
 
-        data.temp = body.currently.temperature
-        console.log(`Pulled temp: ${data.temp}`);
-        console.log('Temperature is now assigned');
-    });
-    console.log(`Value of temp: ${data.temp}`);
-    next();
-});
+//         data.temp = body.currently.temperature
+//         console.log(`Pulled temp: ${data.temp}`);
+//         console.log('Temperature is now assigned');
+//     });
+//     console.log(`Value of temp: ${data.temp}`);
+//     next();
+// });
 
 app.use((req, res, next) => { // News.
     let url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=8d72934b72c44fd897d6e2d2c51862c5';
@@ -99,6 +99,36 @@ const time = () => {
     return `${hours}:${min}`;
 }
 
+const darkSky = (callback) => {
+    let key = '668bf60cf034c2c299111995b6d32d81';
+    let lat = '51';
+    let lng = '0';
+
+    var weatherData = {
+        current: null,
+        day01: null,
+        day02: null,
+        day03: null,
+        day04: null
+    }
+
+    console.log(`Retrieved lat and lng = (${data.lat},${data.lng})`);
+
+    request({
+        url: `https://api.darksky.net/forecast/${key}/${lat},${lng}?units=auto`,
+        json: true
+    }, (error, res, body) => {
+        console.log(`Body of req: ${body}`);
+        weatherData.current = body.currently.temperature;
+        weatherData.day01 = body.daily.data[0].temperatureMin;
+        weatherData.day02 = body.daily.data[1].temperatureMin;
+        weatherData.day03 = body.daily.data[2].temperatureMin;
+        weatherData.day04 = body.daily.data[3].temperatureMin;
+
+        callback(weatherData);
+    });
+}
+
 // Routes:
 app.get('/', (req, res) => {
     res.render('main.hbs', {
@@ -112,8 +142,40 @@ app.get('/', (req, res) => {
 });
 
 // Sockets:
-io.on('connection', () => {
+io.on('connection', (socket) => {
     console.log('a user connected');
+
+    setInterval(() => {
+        let key = '668bf60cf034c2c299111995b6d32d81';
+        let lat = '51';
+        let lng = '0';
+
+        var weatherData = {
+            current: null,
+            day01: null,
+            day02: null,
+            day03: null,
+            day04: null
+        }
+
+        request({
+            url: `https://api.darksky.net/forecast/${key}/${lat},${lng}?units=auto`,
+            json: true
+        }, (error, res, body) => {
+            if (!error) {
+                // weatherData.current = body.currently.temperature;
+                // weatherData.day01 = body.daily.data[0].temperatureMin;
+                // weatherData.day02 = body.daily.data[1].temperatureMin;
+                // weatherData.day03 = body.daily.data[2].temperatureMin;
+                // weatherData.day04 = body.daily.data[3].temperatureMin;
+
+                // socket.emit('weather', weatherData);
+            }else {
+                console.log("used up all requests");
+            }
+        });
+    }, 1000);
+
 });
 
 http.listen(port, () => {
