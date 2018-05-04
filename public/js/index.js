@@ -1,5 +1,5 @@
-var socket = io.connect('https://coincap.io');
-
+var socket = io.connect('https://coincap.io'); // Cryptocurrency Socket.
+var io = io(); // Server Sockets.
 var alertON = null;
 var audio = new Audio('/audio/sound.mp3');
 var prices = {
