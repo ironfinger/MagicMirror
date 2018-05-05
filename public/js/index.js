@@ -13,25 +13,13 @@ socket.on('trades', (body) => {
     if (body.coin == 'BTC' || body.coin == 'BCH' || body.coin == 'ETH' || body.coin == 'LTC') {
         $(document).ready(() => {
             $(`#${body.coin}`).text(`$${Math.round(body.msg.price * 100) / 100}`);
-            console.log(`${body.coin}: ${body.msg.price}`);
-            /*
-            if (body.coin == 'BTC') {
-                if (alertON == true) {
-                    // audio.play();
-                }
-            }else if (body.coin == 'BCH') {
-                
-            }else if (body.coin == 'ETH') {
-                
-            }else if (body.coin == 'LTC') {
-                
-            }*/
+            // console.log(`${body.coin}: ${body.msg.price}`);
         });               
     }
 });
 
 socket.on('trades', (body) => { 
-    console.log(body);
+    // console.log(body);
 });
 
 $(document).ready(() => {
@@ -50,14 +38,12 @@ $(document).ready(() => {
 setInterval(() => {
     $(document).ready(() => {
         var d = new Date();
-        
         var hours = `${d.getHours()}`;
         var min = `${d.getMinutes()}`;
-        
+
         if (hours.length < 2) {
             hours = `0${hours}`;
         }
-        
         if (min.length < 2) {
             min = `0${min}`;
         }
@@ -70,5 +56,12 @@ setInterval(() => {
 var io = io(); // Server Sockets.
 
 io.on('weather', (body) => {
-    console.log(body);
+    $(document).ready(() => {
+        console.log(body);
+        $('#current-weather').text(`Currently: ${body.current} C`);
+        $('#day-01').text(body.day01);
+        $('#day-02').text(body.day02);
+        $('#day-03').text(body.day03);
+        $('#day-04').text(body.day04);
+    });
 });
