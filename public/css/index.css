@@ -130,6 +130,17 @@ body {
 
 }
 
+.user-login {
+    position: absolute;
+    width: 5em;
+    height: 3em;
+    top: 50px;
+    align-self: center;
+    left: auto; 
+    background-color: white;
+    color: black;
+}
+
 #alert-button {
     margin-top: 50px;
     margin-left: 40px;

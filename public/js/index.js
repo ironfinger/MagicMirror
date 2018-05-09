@@ -13,7 +13,7 @@ socket.on('trades', (body) => {
     if (body.coin == 'BTC' || body.coin == 'BCH' || body.coin == 'ETH' || body.coin == 'LTC') {
         $(document).ready(() => {
             $(`#${body.coin}`).text(`$${Math.round(body.msg.price * 100) / 100}`);
-            // console.log(`${body.coin}: ${body.msg.price}`);
+            console.log(`${body.coin}: ${body.msg.price}`);
         });               
     }
 });

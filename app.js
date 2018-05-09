@@ -53,14 +53,7 @@ app.use((req, res, next) => { // News.
 
 // Routes:
 app.get('/', (req, res) => {
-    res.render('main.hbs', {
-        time: time,
-        temperature: `${data.temp} C`,
-        btc: data.BTC,
-        eth: data.ETH,
-        ltc: data.LTC,
-        dash: data.DASH
-    });
+    res.render('main.hbs');
 });
 
 // Sockets:
